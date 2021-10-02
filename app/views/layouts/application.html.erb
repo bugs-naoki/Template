@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebMinimalRailsWithHmrSass</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <% if Rails.env.production? %>
+      <%= stylesheet_link_tag "application", media: "all" %>
+    <% else %>
+      <link href="http://localhost:1234/index.css" rel="stylesheet">
+      <script src="http://localhost:1234/index.js"></script>
+    <% end %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

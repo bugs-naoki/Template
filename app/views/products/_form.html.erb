@@ -1,0 +1,107 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :catchphrase %>
+    <%= form.text_area :catchphrase %>
+  </div>
+
+  <div class="field">
+    <%= form.label :detail %>
+    <%= form.text_area :detail %>
+  </div>
+
+  <div class="field">
+    <%= form.label :classification %>
+    <%= form.text_field :classification %>
+  </div>
+
+  <div class="field">
+    <%= form.label :target_animal %>
+    <%= form.text_field :target_animal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :raw_materials %>
+    <%= form.text_area :raw_materials %>
+  </div>
+
+  <div class="field">
+    <%= form.label :principal_component %>
+    <%= form.text_area :principal_component %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nutritional_information %>
+    <%= form.text_area :nutritional_information %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :daily_dosage %>
+    <%= form.text_area :daily_dosage %>
+  </div>
+
+  <div class="field">
+    <%= form.label :precautions_for_use %>
+    <%= form.text_area :precautions_for_use %>
+  </div>
+
+  <div class="field">
+    <%= form.label :precautions_for_storage_and_handling %>
+    <%= form.text_area :precautions_for_storage_and_handling %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country_of_origin %>
+    <%= form.text_field :country_of_origin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expiration_date_information %>
+    <%= form.text_field :expiration_date_information %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :jan_code %>
+    <%= form.text_field :jan_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :product_category %>
+    <%= form.text_field :product_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :references %>
+    <%= form.text_field :references %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

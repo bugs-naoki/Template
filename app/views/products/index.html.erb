@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Catchphrase</th>
+      <th>Detail</th>
+      <th>Classification</th>
+      <th>Target animal</th>
+      <th>Raw materials</th>
+      <th>Principal component</th>
+      <th>Nutritional information</th>
+      <th>Amount</th>
+      <th>Daily dosage</th>
+      <th>Precautions for use</th>
+      <th>Precautions for storage and handling</th>
+      <th>Country of origin</th>
+      <th>Expiration date information</th>
+      <th>Price</th>
+      <th>Jan code</th>
+      <th>Product category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.catchphrase %></td>
+        <td><%= product.detail %></td>
+        <td><%= product.classification %></td>
+        <td><%= product.target_animal %></td>
+        <td><%= product.raw_materials %></td>
+        <td><%= product.principal_component %></td>
+        <td><%= product.nutritional_information %></td>
+        <td><%= product.amount %></td>
+        <td><%= product.daily_dosage %></td>
+        <td><%= product.precautions_for_use %></td>
+        <td><%= product.precautions_for_storage_and_handling %></td>
+        <td><%= product.country_of_origin %></td>
+        <td><%= product.expiration_date_information %></td>
+        <td><%= product.price %></td>
+        <td><%= product.jan_code %></td>
+        <td><%= product.product_category %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>
