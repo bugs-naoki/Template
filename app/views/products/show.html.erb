@@ -85,10 +85,15 @@
   <%= @product.product_category %>
 </p>
 
+<% @product_pictures.each do |pp| %>
 <p>
-  <strong>References:</strong>
-  <%= @product.references %>
+  <strong>Product Picture:</strong>
+  <%= product_image(@product, pp) %>
 </p>
+<% end %>
+
+
+
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
