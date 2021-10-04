@@ -92,13 +92,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :product_category %>
-    <%= form.text_field :product_category %>
-  </div>
-
-  <div class="field">
-    <%= form.label :references %>
-    <%= form.text_field :references %>
+    <%= form.label :product_category_id %>
+    <%= form.select :product_category_id, @category.map { |v| [v.name, v.id] }  %>
   </div>
 
   <div class="actions">

@@ -82,12 +82,7 @@
 
 <p>
   <strong>Product category:</strong>
-  <%= @product.product_category %>
-</p>
-
-<p>
-  <strong>References:</strong>
-  <%= @product.references %>
+  <%= @product.product_category.name %>
 </p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
