@@ -96,6 +96,16 @@
     <%= form.select :product_category_id, @category.map { |v| [v.name, v.id] }  %>
   </div>
 
+  <div class="field">
+    <%= form.label :picture1 %>
+    <%= form.file_field :picture1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :picture2 %>
+    <%= form.file_field :picture2 %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
