@@ -1,0 +1,89 @@
+.genelallyLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header {
+  width: 100%;
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.header_logoBox {
+  width: 300px;
+}
+
+.header_logo {
+  width: 100%;
+}
+
+.headerTop_nav {
+  display: flex;
+  padding: 0;
+  list-style: none;
+}
+
+.headerTop_navItem {
+  margin: 10px;
+}
+
+.headerBottom {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #8CCAFF;
+  color: #FFF;
+}
+
+.search_formButton {
+  background: #354A7B;
+  border: none;
+  color: #FFF;
+}
+
+.headerBottom_inner {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.headerBottom_nav {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.headerBottom_navItem {
+  position: relative;
+  font-size: 18px;
+  padding: 0 80px;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: #FFF;
+  }
+  &:nth-last-child(1) {
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: block;
+      width: 1px;
+      height: 100%;
+      background: #FFF;
+    }
+  }
+}
