@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     ActiveRecord::Base.transaction do
       @product.product_category = ProductCategory.find(product_params[:product_category_id])
       @product.save!
-      targets = [:picture1, :picture2, :picture3]
+      targets = [:picture1, :picture2]
       targets.each do |key|
         if binary_params[key].present?
           product_picture = ProductPicture.new
@@ -35,15 +35,11 @@ class ProductsController < ApplicationController
           product_picture.save!
         end
       end
-
     end
     redirect_to @product, notice: 'Product was successfully created.'
   rescue => e
     logger.error e
     logger.error e.backtrace.join("\n")
-
-  # binding.pry
-
       render :new
   end
 
@@ -74,6 +70,6 @@ class ProductsController < ApplicationController
     end
 
     def binary_params
-      params.require(:product).permit(:picture1, :picture2, :picture3)
+      params.require(:product).permit(:picture1, :picture2)
     end
 end

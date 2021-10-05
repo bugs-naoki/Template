@@ -85,10 +85,10 @@
   <%= @product.product_category %>
 </p>
 
-<% @product_pictures.each do |pp| %>
+<% @product_pictures.each do |picture| %>
 <p>
   <strong>Product Picture:</strong>
-  <%= product_image(@product, pp) %>
+  <%= product_image(@product, picture) %>
 </p>
 <% end %>
 
