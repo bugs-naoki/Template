@@ -16,11 +16,13 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @category = ProductCategory.all
+    @product_pictures = [ProductPicture.new, ProductPicture.new]
   end
 
   # GET /products/1/edit
   def edit
     @category = ProductCategory.all
+    @product_pictures = ProductPicture.where(product_id: params[:id])
   end
 
   # POST /products
@@ -49,7 +51,21 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1
   def update
-    if @product.update(product_params)
+    @product.attributes = product_params
+    if @product.save
+      ActiveRecord::Base.transaction do
+        @product.product_category = ProductCategory.find(product_params[:product_category_id])
+        @product.save!
+        targets = [:picture1, :picture2]
+        targets.each do |key|
+          if binary_params[key].present?
+            product_picture = ProductPicture.find(binary_params["#{key}_id".to_sym])
+            product_picture.picture = binary_params[key].read
+            product_picture.product = @product
+            product_picture.save!
+          end
+        end
+      end
       redirect_to @product, notice: 'Product was successfully updated.'
     else
       render :edit
@@ -74,6 +90,6 @@ class ProductsController < ApplicationController
     end
 
     def binary_params
-      params.require(:product).permit(:picture1, :picture2)
+      params.require(:product).permit(:picture1, :picture2, :picture1_id, :picture2_id)
     end
 end
