@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   def index
     @products = Product.all
+    @categorys = ProductCategory.all
   end
 
   # GET /products/1
@@ -14,10 +15,12 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @category = ProductCategory.all
   end
 
   # GET /products/1/edit
   def edit
+    @category = ProductCategory.all
   end
 
   # POST /products
@@ -25,6 +28,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     ActiveRecord::Base.transaction do
       @product.product_category = ProductCategory.find(product_params[:product_category_id])
+      @category = ProductCategory.all
       @product.save!
       targets = [:picture1, :picture2]
       targets.each do |key|
