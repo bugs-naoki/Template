@@ -92,13 +92,23 @@
   </div>
 
   <div class="field">
-    <%= form.label :product_category %>
-    <%= form.text_field :product_category %>
+    <%= form.label :product_category_id %>
+    <%= form.text_field :product_category_id %>
   </div>
 
   <div class="field">
     <%= form.label :references %>
     <%= form.text_field :references %>
+  </div>
+
+  <div class="field">
+    <%= form.label :picture1 %>
+    <%= form.file_field :picture1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :picture2 %>
+    <%= form.file_field :picture2 %>
   </div>
 
   <div class="actions">
