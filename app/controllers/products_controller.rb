@@ -34,19 +34,19 @@ class ProductsController < ApplicationController
       @product.save!
       targets = [:picture1, :picture2]
       targets.each do |key|
-        if binary_params[key].present?
-          product_picture = ProductPicture.new
-          product_picture.picture = binary_params[key].read
-          product_picture.product = @product
-          product_picture.save!
-        end
+        next if binary_params[key].blank?
+
+        product_picture = ProductPicture.new
+        product_picture.picture = binary_params[key].read
+        product_picture.product = @product
+        product_picture.save!
       end
     end
-    redirect_to @product, notice: 'Product was successfully created.'
-  rescue => e
+    redirect_to @product, notice: "Product was successfully created."
+  rescue StandardError => e
     logger.error e
     logger.error e.backtrace.join("\n")
-      render :new
+    render :new
   end
 
   # PATCH/PUT /products/1
@@ -58,15 +58,15 @@ class ProductsController < ApplicationController
         @product.save!
         targets = [:picture1, :picture2]
         targets.each do |key|
-          if binary_params[key].present?
-            product_picture = ProductPicture.find(binary_params["#{key}_id".to_sym])
-            product_picture.picture = binary_params[key].read
-            product_picture.product = @product
-            product_picture.save!
-          end
+          next if binary_params[key].blank?
+
+          product_picture = ProductPicture.find(binary_params["#{key}_id".to_sym])
+          product_picture.picture = binary_params[key].read
+          product_picture.product = @product
+          product_picture.save!
         end
       end
-      redirect_to @product, notice: 'Product was successfully updated.'
+      redirect_to @product, notice: "Product was successfully updated."
     else
       render :edit
     end
@@ -75,21 +75,23 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   def destroy
     @product.destroy
-    redirect_to products_url, notice: 'Product was successfully destroyed.'
+    redirect_to products_url, notice: "Product was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def product_params
-      params.require(:product).permit(:name, :catchphrase, :detail, :classification, :target_animal, :raw_materials, :principal_component, :nutritional_information, :amount, :daily_dosage, :precautions_for_use, :precautions_for_storage_and_handling, :country_of_origin, :expiration_date_information, :price, :jan_code, :product_category_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
-    def binary_params
-      params.require(:product).permit(:picture1, :picture2, :picture1_id, :picture2_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def product_params
+    params.require(:product).permit(:name, :catchphrase, :detail, :classification, :target_animal, :raw_materials,
+                                    :principal_component, :nutritional_information, :amount, :daily_dosage, :precautions_for_use, :precautions_for_storage_and_handling, :country_of_origin, :expiration_date_information, :price, :jan_code, :product_category_id)
+  end
+
+  def binary_params
+    params.require(:product).permit(:picture1, :picture2, :picture1_id, :picture2_id)
+  end
 end

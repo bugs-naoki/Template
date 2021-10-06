@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @seminar.title %>
+</p>
+
+<p>
+  <strong>Thumbnail:</strong>
+  <%= @seminar.thumbnail %>
+</p>
+
+<p>
+  <strong>Thumbnail mime type:</strong>
+  <%= @seminar.thumbnail_mime_type %>
+</p>
+
+<p>
+  <strong>Target:</strong>
+  <%= @seminar.target_id %>
+</p>
+
+<p>
+  <strong>Holding method:</strong>
+  <%= @seminar.holding_method_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @seminar.description %>
+</p>
+
+<p>
+  <strong>Pdf:</strong>
+  <%= @seminar.pdf %>
+</p>
+
+<p>
+  <strong>Recommend:</strong>
+  <%= @seminar.recommend %>
+</p>
+
+<p>
+  <strong>Appeal:</strong>
+  <%= @seminar.appeal %>
+</p>
+
+<p>
+  <strong>Feedback:</strong>
+  <%= @seminar.feedback %>
+</p>
+
+<p>
+  <strong>Lecturer profiles:</strong>
+  <%= @seminar.lecturer_profiles %>
+</p>
+
+<p>
+  <strong>Datetime of the seminar:</strong>
+  <%= @seminar.datetime_of_the_seminar %>
+</p>
+
+<p>
+  <strong>Program:</strong>
+  <%= @seminar.program %>
+</p>
+
+<p>
+  <strong>Course fee:</strong>
+  <%= @seminar.course_fee %>
+</p>
+
+<p>
+  <strong>Preparation:</strong>
+  <%= @seminar.preparation %>
+</p>
+
+<p>
+  <strong>Manual link:</strong>
+  <%= @seminar.manual_link %>
+</p>
+
+<%= link_to 'Edit', edit_seminar_path(@seminar) %> |
+<%= link_to 'Back', seminars_path %>

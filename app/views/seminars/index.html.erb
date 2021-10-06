@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Seminars</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Thumbnail</th>
+      <th>Thumbnail mime type</th>
+      <th>Target</th>
+      <th>Holding method</th>
+      <th>Description</th>
+      <th>Pdf</th>
+      <th>Recommend</th>
+      <th>Appeal</th>
+      <th>Feedback</th>
+      <th>Lecturer profiles</th>
+      <th>Datetime of the seminar</th>
+      <th>Program</th>
+      <th>Course fee</th>
+      <th>Preparation</th>
+      <th>Manual link</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @seminars.each do |seminar| %>
+      <tr>
+        <td><%= seminar.title %></td>
+        <td><%# seminar.thumbnail %></td>
+        <td><%= seminar.thumbnail_mime_type %></td>
+        <td><%= seminar.seminar_target.name %></td>
+        <td><%= seminar.seminar_holding_method.name %></td>
+        <td><%= seminar.description %></td>
+        <td><%# seminar.pdf %></td>
+        <td><%= seminar.recommend %></td>
+        <td><%= seminar.appeal %></td>
+        <td><%= seminar.feedback %></td>
+        <td><%= seminar.lecturer_profiles %></td>
+        <td><%= seminar.datetime_of_the_seminar %></td>
+        <td><%= seminar.program %></td>
+        <td><%= seminar.course_fee %></td>
+        <td><%= seminar.preparation %></td>
+        <td><%= seminar.manual_link %></td>
+        <td><%= link_to 'Show', seminar %></td>
+        <td><%= link_to 'Edit', edit_seminar_path(seminar) %></td>
+        <td><%= link_to 'Destroy', seminar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Seminar', new_seminar_path %>

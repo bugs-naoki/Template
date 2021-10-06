@@ -1,0 +1,2 @@
+class SeminarTarget < ApplicationRecord
+end

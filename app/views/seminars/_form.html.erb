@@ -1,0 +1,97 @@
+<%= form_with(model: seminar) do |form| %>
+  <% if seminar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(seminar.errors.count, "error") %> prohibited this seminar from being saved:</h2>
+
+      <ul>
+        <% seminar.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :thumbnail %>
+    <%= form.text_field :thumbnail %>
+  </div>
+
+  <div class="field">
+    <%= form.label :thumbnail_mime_type %>
+    <%= form.text_field :thumbnail_mime_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :target_id %>
+    <%= form.text_field :target_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :holding_method_id %>
+    <%= form.text_field :holding_method_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pdf %>
+    <%= form.text_field :pdf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recommend %>
+    <%= form.text_area :recommend %>
+  </div>
+
+  <div class="field">
+    <%= form.label :appeal %>
+    <%= form.text_area :appeal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :feedback %>
+    <%= form.text_area :feedback %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lecturer_profiles %>
+    <%= form.text_area :lecturer_profiles %>
+  </div>
+
+  <div class="field">
+    <%= form.label :datetime_of_the_seminar %>
+    <%= form.datetime_select :datetime_of_the_seminar %>
+  </div>
+
+  <div class="field">
+    <%= form.label :program %>
+    <%= form.text_area :program %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_fee %>
+    <%= form.number_field :course_fee %>
+  </div>
+
+  <div class="field">
+    <%= form.label :preparation %>
+    <%= form.text_area :preparation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :manual_link %>
+    <%= form.text_field :manual_link %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

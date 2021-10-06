@@ -1,4 +1,3 @@
 class Mypage::IndexController < Mypage::MypageApplicationController
-  def index
-  end
+  def index; end
 end
