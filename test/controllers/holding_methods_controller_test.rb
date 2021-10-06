@@ -16,7 +16,7 @@ class HoldingMethodsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create holding_method" do
-    assert_difference('HoldingMethod.count') do
+    assert_difference("HoldingMethod.count") do
       post holding_methods_url, params: { holding_method: { name: @holding_method.name } }
     end
 
@@ -39,7 +39,7 @@ class HoldingMethodsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy holding_method" do
-    assert_difference('HoldingMethod.count', -1) do
+    assert_difference("HoldingMethod.count", -1) do
       delete holding_method_url(@holding_method)
     end
 

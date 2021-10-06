@@ -7,8 +7,7 @@ class SeminarTargetsController < ApplicationController
   end
 
   # GET /seminar_targets/1
-  def show
-  end
+  def show; end
 
   # GET /seminar_targets/new
   def new
@@ -16,15 +15,14 @@ class SeminarTargetsController < ApplicationController
   end
 
   # GET /seminar_targets/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /seminar_targets
   def create
     @seminar_target = SeminarTarget.new(seminar_target_params)
 
     if @seminar_target.save
-      redirect_to @seminar_target, notice: 'Seminar target was successfully created.'
+      redirect_to @seminar_target, notice: "Seminar target was successfully created."
     else
       render :new
     end
@@ -33,7 +31,7 @@ class SeminarTargetsController < ApplicationController
   # PATCH/PUT /seminar_targets/1
   def update
     if @seminar_target.update(seminar_target_params)
-      redirect_to @seminar_target, notice: 'Seminar target was successfully updated.'
+      redirect_to @seminar_target, notice: "Seminar target was successfully updated."
     else
       render :edit
     end
@@ -42,17 +40,18 @@ class SeminarTargetsController < ApplicationController
   # DELETE /seminar_targets/1
   def destroy
     @seminar_target.destroy
-    redirect_to seminar_targets_url, notice: 'Seminar target was successfully destroyed.'
+    redirect_to seminar_targets_url, notice: "Seminar target was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_seminar_target
-      @seminar_target = SeminarTarget.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def seminar_target_params
-      params.require(:seminar_target).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_seminar_target
+    @seminar_target = SeminarTarget.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def seminar_target_params
+    params.require(:seminar_target).permit(:name)
+  end
 end

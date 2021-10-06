@@ -16,7 +16,7 @@ class SeminarTargetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create seminar_target" do
-    assert_difference('SeminarTarget.count') do
+    assert_difference("SeminarTarget.count") do
       post seminar_targets_url, params: { seminar_target: { name: @seminar_target.name } }
     end
 
@@ -39,7 +39,7 @@ class SeminarTargetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy seminar_target" do
-    assert_difference('SeminarTarget.count', -1) do
+    assert_difference("SeminarTarget.count", -1) do
       delete seminar_target_url(@seminar_target)
     end
 

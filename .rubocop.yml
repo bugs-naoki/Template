@@ -105,6 +105,8 @@ Style/NumericPredicate:
   Enabled: false
 
 Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
   Exclude:
     - test/factories/*
 

@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-product_categories = %w(サプリメント スキンケア・コートケア イヤーケア オーラルケア 衛生用品・CO2 トリーツ その他)
+product_categories = %w[サプリメント スキンケア・コートケア イヤーケア オーラルケア 衛生用品・CO2 トリーツ その他]
 product_categories.each do |v|
   ProductCategory.create!(name: v)
 end
@@ -40,11 +40,9 @@ ProductPicture.create!(
   product: p,
 )
 
-
-
-SeminarTarget.create!( name: "獣医師" )
-SeminarTarget.create!( name: "動物看護師" )
-SeminarTarget.create!( name: "トリマー" )
+SeminarTarget.create!(name: "獣医師")
+SeminarTarget.create!(name: "動物看護師")
+SeminarTarget.create!(name: "トリマー")
 SeminarHoldingMethod.create!(name: "セミナー")
 SeminarHoldingMethod.create!(name: "オンラインサロン")
 
@@ -60,7 +58,7 @@ Seminar.create!(
   appeal: "ポイント",
   feedback: "過去受講者の声",
   lecturer_profiles: "講師情報",
-  datetime_of_the_seminar: Time.zone.now + 10.day,
+  datetime_of_the_seminar: Time.zone.now + 10.days,
   program: "プログラム",
   course_fee: "受講料",
   preparation: "準備物",

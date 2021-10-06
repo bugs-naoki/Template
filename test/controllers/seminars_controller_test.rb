@@ -16,7 +16,7 @@ class SeminarsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create seminar" do
-    assert_difference('Seminar.count') do
+    assert_difference("Seminar.count") do
       post seminars_url, params: { seminar: { appeal: @seminar.appeal, course_fee: @seminar.course_fee, datetime_of_the_seminar: @seminar.datetime_of_the_seminar, description: @seminar.description, feedback: @seminar.feedback, holding_method_id: @seminar.holding_method_id, lecturer_profiles: @seminar.lecturer_profiles, manual_link: @seminar.manual_link, pdf: @seminar.pdf, preparation: @seminar.preparation, program: @seminar.program, recommend: @seminar.recommend, target_id: @seminar.target_id, thumbnail: @seminar.thumbnail, thumbnail_mime_type: @seminar.thumbnail_mime_type, title: @seminar.title } }
     end
 
@@ -39,7 +39,7 @@ class SeminarsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy seminar" do
-    assert_difference('Seminar.count', -1) do
+    assert_difference("Seminar.count", -1) do
       delete seminar_url(@seminar)
     end
 
