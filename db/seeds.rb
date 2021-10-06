@@ -11,7 +11,7 @@ product_categories.each do |v|
   ProductCategory.create!(name: v)
 end
 
-Product.create!(
+p = Product.create!(
   name: "商品名",
   catchphrase: "キャッチフレーズ",
   detail: "製品情報詳細",
@@ -29,4 +29,40 @@ Product.create!(
   price: "希望小売価格（税込）",
   jan_code: "JANコード",
   product_category: ProductCategory.first,
+)
+
+ProductPicture.create!(
+  picture: File.binread(Rails.root.join("public/product-sample1.jpg")),
+  product: p,
+)
+ProductPicture.create!(
+  picture: File.binread(Rails.root.join("public/product-sample2.jpg")),
+  product: p,
+)
+
+
+
+SeminarTarget.create!( name: "獣医師" )
+SeminarTarget.create!( name: "動物看護師" )
+SeminarTarget.create!( name: "トリマー" )
+SeminarHoldingMethod.create!(name: "セミナー")
+SeminarHoldingMethod.create!(name: "オンラインサロン")
+
+Seminar.create!(
+  title: "セミナータイトル",
+  thumbnail: "セミナーサムネイル画像",
+  thumbnail_mime_type: "",
+  seminar_target: SeminarTarget.first,
+  seminar_holding_method: SeminarHoldingMethod.first,
+  description: "概要",
+  pdf: "チラシPDFリンク",
+  recommend: "こんな方におすすめ",
+  appeal: "ポイント",
+  feedback: "過去受講者の声",
+  lecturer_profiles: "講師情報",
+  datetime_of_the_seminar: Time.zone.now + 10.day,
+  program: "プログラム",
+  course_fee: "受講料",
+  preparation: "準備物",
+  manual_link: "受講マニュアルリンク",
 )

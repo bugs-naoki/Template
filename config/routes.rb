@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :seminars
+  resources :holding_methods
+  resources :seminar_targets
   resources :products do
     resources :product_pictures, only: [:show]
   end
