@@ -15,6 +15,49 @@
   </head>
 
   <body>
+    <header class="header">
+      <div class="headerTop">
+        <div class="header_logoBox">
+          <img src="/qix_logo.png" alt="" class="header_logo">
+        </div>
+        <%= form_tag("/", :method => 'get', :class => "search_form") do %>
+          <%= text_field_tag :search, "キーワード検索" %>
+          <%= submit_tag '検索', :name => nil, :class => "search_formButton"%>
+        <% end %>
+        <ul class="headerTop_nav">
+          <li class="headerTop_navItem">
+            <%= link_to "お問い合わせ", "/", class: "genelallyLink" %>
+          </li>
+          <li class="headerTop_navItem">
+            <%= link_to "ヘルプ", "/", class: "genelallyLink" %>
+          </li>
+          <li class="headerTop_navItem">
+            <%= link_to "ログイン", new_user_session_path, class: "genelallyLink" %>
+          </li>
+        </ul>
+        <div class="hamburgerButton">
+          <span></span>
+        </div>
+      </div>
+      <div class="headerBottom">
+        <div class="headerBottom_inner">
+          <ul class="headerBottom_nav">
+            <li class="headerBottom_navItem">
+              <%= link_to "探す", "/", class: "genelallyLink" %>
+              <span></span>
+            </li>
+            <li class="headerBottom_navItem">
+              <%= link_to "学ぶ", "/", class: "genelallyLink" %>
+              <span></span>
+            </li>
+            <li class="headerBottom_navItem">
+              <%= link_to "知る", "/", class: "genelallyLink" %>
+              <span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
