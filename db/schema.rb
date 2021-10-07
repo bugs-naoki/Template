@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_04_055345) do
+ActiveRecord::Schema.define(version: 2021_10_06_071615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,43 @@ ActiveRecord::Schema.define(version: 2021_10_04_055345) do
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end
 
+  create_table "seminar_holding_methods", force: :cascade do |t|
+    t.string "name", default: "", null: false, comment: "セミナーの形式（セミナー/オンラインサロン）"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_seminar_holding_methods_on_name", unique: true
+  end
+
+  create_table "seminar_targets", force: :cascade do |t|
+    t.string "name", default: "", null: false, comment: "セミナーのターゲット（獣医師/動物看護師/トリマー)"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_seminar_targets_on_name", unique: true
+  end
+
+  create_table "seminars", force: :cascade do |t|
+    t.string "title", default: "", null: false, comment: "セミナータイトル"
+    t.binary "thumbnail", default: "", null: false, comment: "セミナーサムネイル画像"
+    t.string "thumbnail_mime_type", default: "", null: false
+    t.bigint "seminar_target_id", null: false, comment: "セミナーの対象（獣医師/動物看護師/トリマー"
+    t.bigint "seminar_holding_method_id", null: false, comment: "セミナーの形式（セミナー/オンラインサロン）"
+    t.text "description", default: "", null: false, comment: "概要"
+    t.binary "pdf", default: "", null: false, comment: "チラシPDFリンク"
+    t.text "recommend", default: "", null: false, comment: "こんな方におすすめ"
+    t.text "appeal", default: "", null: false, comment: "ポイント"
+    t.text "feedback", default: "", null: false, comment: "過去受講者の声"
+    t.text "lecturer_profiles", default: "", null: false, comment: "講師情報"
+    t.datetime "datetime_of_the_seminar", null: false, comment: "開催日時"
+    t.text "program", default: "", null: false, comment: "プログラム"
+    t.integer "course_fee", null: false, comment: "受講料"
+    t.text "preparation", default: "", null: false, comment: "準備物"
+    t.string "manual_link", default: "", null: false, comment: "受講マニュアルリンク"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["seminar_holding_method_id"], name: "index_seminars_on_seminar_holding_method_id"
+    t.index ["seminar_target_id"], name: "index_seminars_on_seminar_target_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -65,4 +102,6 @@ ActiveRecord::Schema.define(version: 2021_10_04_055345) do
   end
 
   add_foreign_key "product_pictures", "products"
+  add_foreign_key "seminars", "seminar_holding_methods"
+  add_foreign_key "seminars", "seminar_targets"
 end

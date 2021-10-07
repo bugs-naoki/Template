@@ -1,0 +1,2 @@
+class SeminarHoldingMethod < ApplicationRecord
+end

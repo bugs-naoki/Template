@@ -16,7 +16,7 @@ class ProductCategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create product_category" do
-    assert_difference('ProductCategory.count') do
+    assert_difference("ProductCategory.count") do
       post product_categories_url, params: { product_category: { name: @product_category.name } }
     end
 
@@ -39,7 +39,7 @@ class ProductCategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy product_category" do
-    assert_difference('ProductCategory.count', -1) do
+    assert_difference("ProductCategory.count", -1) do
       delete product_category_url(@product_category)
     end
 

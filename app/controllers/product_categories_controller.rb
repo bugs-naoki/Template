@@ -7,8 +7,7 @@ class ProductCategoriesController < ApplicationController
   end
 
   # GET /product_categories/1
-  def show
-  end
+  def show; end
 
   # GET /product_categories/new
   def new
@@ -16,15 +15,14 @@ class ProductCategoriesController < ApplicationController
   end
 
   # GET /product_categories/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /product_categories
   def create
     @product_category = ProductCategory.new(product_category_params)
 
     if @product_category.save
-      redirect_to @product_category, notice: 'Product category was successfully created.'
+      redirect_to @product_category, notice: "Product category was successfully created."
     else
       render :new
     end
@@ -33,7 +31,7 @@ class ProductCategoriesController < ApplicationController
   # PATCH/PUT /product_categories/1
   def update
     if @product_category.update(product_category_params)
-      redirect_to @product_category, notice: 'Product category was successfully updated.'
+      redirect_to @product_category, notice: "Product category was successfully updated."
     else
       render :edit
     end
@@ -42,17 +40,18 @@ class ProductCategoriesController < ApplicationController
   # DELETE /product_categories/1
   def destroy
     @product_category.destroy
-    redirect_to product_categories_url, notice: 'Product category was successfully destroyed.'
+    redirect_to product_categories_url, notice: "Product category was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product_category
-      @product_category = ProductCategory.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def product_category_params
-      params.require(:product_category).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product_category
+    @product_category = ProductCategory.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def product_category_params
+    params.require(:product_category).permit(:name)
+  end
 end

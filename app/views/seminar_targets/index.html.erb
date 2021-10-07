@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Seminar Targets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @seminar_targets.each do |seminar_target| %>
+      <tr>
+        <td><%= seminar_target.name %></td>
+        <td><%= link_to 'Show', seminar_target %></td>
+        <td><%= link_to 'Edit', edit_seminar_target_path(seminar_target) %></td>
+        <td><%= link_to 'Destroy', seminar_target, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Seminar Target', new_seminar_target_path %>
