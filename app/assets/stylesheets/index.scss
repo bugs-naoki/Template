@@ -1,66 +1,58 @@
-.main {
+.globalMain{
+  margin: 20px 70px;
+  width: auto;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row-reverse;
   justify-content: space-between;
 
-  .mainMenu_title {
-    margin-top: 50px;
-    margin-bottom: 0;
-  }
-
-  .mainMenu_list {
-    margin-bottom: 0;
-    border-top: 3px solid #354a7b;
-  }
-
-  .section_title {
+  h2{
     background-color: #e6f4ff;
-    margin-top: 0;
-  }
-
-  .tag_list {
-    display: flex;
-    flex-wrap: nowrap;
-    list-style: none;
-    justify-content: space-around;
-    padding: 0;
-
-    .tag_item {
-      margin: 0 5px;
-    }
-  }
-
-  .tab_box {
-    position: absolute;
-    top: -32px;
-    left: -2px;
-  }
-
-  .tab_list {
-    border: 2px solid #354a7b;
-    border-bottom: none;
-    width: 100px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    background: #FFF;
-  }
-
-  .ingredient_box {
-    position: relative;
-    margin: 50px 0;
-    border: 2px solid #354a7b;
-    
-    .ingredient_list {
-      display: flex;
-      flex-wrap: nowrap;
-
-      .ingredient_item {
-        margin: 0 20px;
-      }
-    }
   }
 }
 
+.mainMenu{
+  list-style: none;
+  margin-bottom: 0;
+
+  dt{
+    border-bottom: 3px solid #354a7b;
+  }
+}
+
+.ingredientTag{
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  justify-content: space-around;
+}
+
+.ingredientBox{
+  position: relative;
+}
+
+.tab_list{
+  position: absolute;
+  top: 120px;
+  z-index: 10;
+  border: 2px solid #354a7b;
+  border-bottom: none;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  background: #FFF;
+}
+
+.ingredient{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin: 50px 0;
+  border: 2px solid #354a7b;
+
+  li{
+    margin: 0 20px;
+  }
+}
