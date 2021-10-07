@@ -1,4 +1,7 @@
 html, body {
+  color: #354A7B;
 }
 
+@import "sanitize.scss";
+@import "application.scss";
 @import "index.scss";

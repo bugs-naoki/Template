@@ -16,7 +16,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create product" do
-    assert_difference('Product.count') do
+    assert_difference("Product.count") do
       post products_url, params: { product: { amount: @product.amount, catchphrase: @product.catchphrase, classification: @product.classification, country_of_origin: @product.country_of_origin, daily_dosage: @product.daily_dosage, detail: @product.detail, expiration_date_information: @product.expiration_date_information, jan_code: @product.jan_code, name: @product.name, nutritional_information: @product.nutritional_information, precautions_for_storage_and_handling: @product.precautions_for_storage_and_handling, precautions_for_use: @product.precautions_for_use, price: @product.price, principal_component: @product.principal_component, product_category: @product.product_category, raw_materials: @product.raw_materials, references: @product.references, target_animal: @product.target_animal } }
     end
 
@@ -39,7 +39,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy product" do
-    assert_difference('Product.count', -1) do
+    assert_difference("Product.count", -1) do
       delete product_url(@product)
     end
 
