@@ -1,0 +1,62 @@
+version: "3"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: /bin/sh -c "bundle exec rails db:create ; bundle exec rails db:migrate db:seed ;rm -f tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0' -p 3000"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    tty: true
+    stdin_open: true
+    environment:
+      DB_USER: postgres
+      DB_PASS: dev
+      DB_PORT: 5432
+      DB_HOST: db
+      DB_NAME: dev
+    depends_on:
+      - db
+        
+  prod:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: /bin/sh -c "./bin/rails assets:precompile && bundle exec rails db:create ; bundle exec rails db:migrate db:seed ; rm -f tmp/pids/server.pid && bundle exec rails s -e production -b '0.0.0.0' -p 3001"
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/app
+    tty: true
+    stdin_open: true
+    environment:
+      DB_USER: postgres
+      DB_PASS: dev
+      DB_PORT: 5432
+      DB_HOST: db
+      DB_NAME: prod
+      RAILS_ENV: production
+    depends_on:
+      - db
+  
+  asset:
+    image: node:16
+    command: /bin/sh -c "yarn && yarn parcel --hmr-port 1235 app/javascript/index.js"
+    ports:
+      - "1234:1234"
+      - "1235:1235"
+    volumes:
+      - .:/app
+    working_dir: /app
+    
+  db:
+    image: "postgres:12"
+    command: postgres -c log_destination=stderr -c log_statement=all -c log_connections=on -c log_disconnections=on
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: dev
